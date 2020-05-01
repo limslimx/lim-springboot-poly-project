@@ -21,17 +21,17 @@ public class BookService {
     private final BookRepository bookRepository;
     private final CrawlingService crawlingService;
 
-    public List<BookDto> getBookSearchInfo(String bookName) throws Exception {
+    public List<BookDto> getBookSearchInfo(String searchBy) throws Exception {
         log.info(this.getClass().getName() + ".getBookSearchInfo start!");
 
-        List<BookDto> bookDtoList = bookRepository.findBookByName(bookName, DateUtil.getDateTime("yyyyMMdd"));
+        List<BookDto> bookDtoList = bookRepository.findBookByDate(searchBy, DateUtil.getDateTime("yyyyMMdd"));
 
         if (bookDtoList == null) {
             bookDtoList = new ArrayList<BookDto>();
         }
         if (bookDtoList.size() == 0) {
-            crawlingService.searchBookAndSave(bookName);
-            bookDtoList = bookRepository.findBookByName(bookName, DateUtil.getDateTime("yyyyMMdd"));
+            crawlingService.searchBookAndSave(searchBy);
+            bookDtoList = bookRepository.findBookByDate(searchBy, DateUtil.getDateTime("yyyyMMdd"));
 
             if (bookDtoList == null) {
                 bookDtoList = new ArrayList<BookDto>();

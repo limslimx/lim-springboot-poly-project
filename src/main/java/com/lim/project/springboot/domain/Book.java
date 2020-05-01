@@ -18,6 +18,8 @@ public class Book {
 
     private String searchDate;
 
+    private String searchBy;
+
     private String name;
 
     private String subName;
@@ -39,8 +41,9 @@ public class Book {
     private String publicationDate;
 
     @Builder
-    public Book(String searchDate, String name, String subName, String img, String author, String category, String detailCategory, String rank, String tag, String url, String publicationDate) {
+    public Book(String searchDate, String searchBy, String name, String subName, String img, String author, String category, String detailCategory, String rank, String tag, String url, String publicationDate) {
         this.searchDate = searchDate;
+        this.searchBy = searchBy;
         this.name = name;
         this.subName = subName;
         this.img = img;

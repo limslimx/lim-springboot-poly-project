@@ -27,10 +27,10 @@ public class CrawlingService {
     private String url;
     private Document doc;
 
-    public List<Book> searchBookAndSave(String bookName) throws Exception {
+    public List<Book> searchBookAndSave(String searchBy) throws Exception {
         log.info(this.getClass().getName() + ".searchBookAndSave start!");
 
-        url = "https://search.kyobobook.co.kr/web/search?vPstrKeyWord="+bookName+"&orderClick=LAG";
+        url = "https://search.kyobobook.co.kr/web/search?vPstrKeyWord="+searchBy+"&orderClick=LAG";
         doc = Jsoup.connect(url).get();
         Elements elements = doc.select("tbody#search_list tr");
         for (Element element : elements) {
@@ -63,6 +63,7 @@ public class CrawlingService {
 
             log.info("----------------------------------");
             log.info("해당책 크롤링 시작");
+            log.info("검색어: "+searchBy);
             log.info("제목: "+title);
             log.info("카테고리: "+category);
             log.info("이미지: "+imageAttr);
@@ -83,6 +84,7 @@ public class CrawlingService {
                 //bookDto에 데이터 저장
                 BookDto bookDto = BookDto.builder()
                         .searchDate(CmmUtil.nvl(DateUtil.getDateTime("yyyyMMdd")))
+                        .searchBy(searchBy)
                         .name(CmmUtil.nvl(title))
                         .category(CmmUtil.nvl(category))
                         .img(CmmUtil.nvl(imageAttr))

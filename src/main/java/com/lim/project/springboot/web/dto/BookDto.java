@@ -9,6 +9,8 @@ public class BookDto {
 
     private String searchDate;
 
+    private String searchBy;
+
     private String name;
 
     private String subName;
@@ -29,9 +31,14 @@ public class BookDto {
 
     private String publicationDate;
 
+    public BookDto(String searchBy){
+        this.searchBy = searchBy;
+    }
+
     @Builder
-    public BookDto(String searchDate, String name, String subName, String img, String author, String category, String detailCategory, String rank, String tag, String url, String publicationDate) {
+    public BookDto(String searchDate, String searchBy, String name, String subName, String img, String author, String category, String detailCategory, String rank, String tag, String url, String publicationDate) {
         this.searchDate = searchDate;
+        this.searchBy = searchBy;
         this.name = name;
         this.subName = subName;
         this.img = img;
@@ -47,6 +54,7 @@ public class BookDto {
     public Book toEntity(){
         return Book.builder()
                 .searchDate(searchDate)
+                .searchBy(searchBy)
                 .name(name)
                 .subName(subName)
                 .img(img)
