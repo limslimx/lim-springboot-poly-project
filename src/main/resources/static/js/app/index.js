@@ -18,11 +18,11 @@ var index={
             success: function (json) {
                 var msg="";
                 for (var i = 0; i < json.length; i++) {
+                    msg += ("<img src=" + json[i].img + "></img><br/>");
                     msg += ("제목: " + json[i].name + "<br/>");
                     msg += ("소제목: " + json[i].subName + "<br/>");
-                    msg += ("<img src=" + json[i].img + ">ㄹ</img>");
                     msg += ("저자: " + json[i].author + "<br/>");
-                    msg += ("카테고리: " + json[i].category + "<br/>");
+                    msg += ("카테고리: " + json[i].detailCategory + "<br/>");
                     msg += ("순위: " + json[i].rank + "<br/>");
                     msg += ("태그: " + json[i].tag + "<br/>");
                     msg += ("출간일: " + json[i].publicationDate + "<br/>");
