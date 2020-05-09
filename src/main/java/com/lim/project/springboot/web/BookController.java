@@ -3,7 +3,6 @@ package com.lim.project.springboot.web;
 import com.lim.project.springboot.service.CrawlingService;
 import com.lim.project.springboot.service.book.BookService;
 import com.lim.project.springboot.web.dto.BookDto;
-import com.lim.project.springboot.web.dto.BookSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,7 +22,7 @@ public class BookController {
 
     @PostMapping("/book/info")
     public List<BookDto> bookSearch(@RequestBody BookDto requestDto) throws Exception {
-        log.info(this.getClass().getName()+".bookSearch start!");
+        log.info(this.getClass().getName() + ".bookSearch start!");
 
         List<BookDto> bookDtoList = null;
         String searchBy = requestDto.getSearchBy();
@@ -33,7 +32,7 @@ public class BookController {
         if (bookDtoList == null) {
             bookDtoList = new ArrayList<BookDto>();
         }
-        log.info(this.getClass().getName()+".bookSearch end!");
+        log.info(this.getClass().getName() + ".bookSearch end!");
         return bookDtoList;
     }
 }
