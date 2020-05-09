@@ -29,7 +29,6 @@ public class BookController {
         String searchBy = requestDto.getSearchBy();
         log.info(searchBy);
         bookDtoList = bookService.getBookSearchInfo(searchBy);
-        log.info("--------------------"+bookDtoList.get(0).getName());
 
         if (bookDtoList == null) {
             bookDtoList = new ArrayList<BookDto>();
