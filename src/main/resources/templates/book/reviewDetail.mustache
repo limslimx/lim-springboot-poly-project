@@ -1,0 +1,30 @@
+{{>layout/header}}
+
+<form class="form-signin">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="/image/app/book.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">내 독서록 상세</h1>
+    </div>
+
+    <div class="form-group">
+        책 <input type="text" id="name" class="form-control" value="{{reviewDetail.name}}" readonly>
+    </div>
+    <div class="form-group">
+        책 저자 <input type="text" id="author" class="form-control" value="{{reviewDetail.author}}" readonly>
+    </div>
+    <div class="form-group">
+        책 카테고리 <input type="text" id="category" class="form-control" value="{{reviewDetail.category}}" readonly>
+    </div>
+    <div class="form-group">
+        독서록 제목 <input type="text" id="title" class="form-control" value="{{reviewDetail.title}}">
+    </div>
+    <div class="form-group">
+        독서록 내용 <textarea id="content" id="book_review" class="form-control">{{reviewDetail.content}}</textarea>
+    </div>
+
+    <button type="button" class="btn btn-lg btn-primary btn-block" id="btn-reviewSave">작성하기</button>
+
+    <p class="mt-5 mb-3 text-muted text-center">&copy; Book Crawling 2020</p>
+</form>
+
+{{>layout/footer}}

@@ -4,6 +4,7 @@ import com.lim.project.springboot.domain.BookRepository;
 import com.lim.project.springboot.service.CrawlingService;
 import com.lim.project.springboot.util.DateUtil;
 import com.lim.project.springboot.web.dto.BookDto;
+import com.lim.project.springboot.web.dto.BookReviewDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

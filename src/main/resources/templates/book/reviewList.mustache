@@ -1,0 +1,20 @@
+{{>layout/header}}
+
+<div class="form-signin">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="/image/app/book.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">내 독서록 목록</h1>
+    </div>
+    {{#reviewList}}
+    <a href="/book/review/detail/{{id}}" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">제목: {{id}}{{title}}</h5>
+            <small>{{category}}</small>
+        </div>
+        <p class="mb-1">{{content}}</p>
+        <small>책: {{name}}</small>
+    </a><hr/>
+    {{/reviewList}}
+</div>
+
+{{>layout/footer}}

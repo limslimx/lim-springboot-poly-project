@@ -34,7 +34,7 @@ var index={
                     }
                     msg += ("태그: " + json[i].tag + "<br/>");
                     msg += ("출간일: " + json[i].publicationDate.substring(0, json[i].publicationDate.length-2) + "<br/>");
-                    msg += ("<button type=button class='btn btn-sm btn-success' id='btn-review"+i+"' onclick='test(this.id)'>독서록 작성하기</button><br/>");
+                    msg += ("<button type=button class='btn btn-sm btn-success' id='btn-review"+i+"' onclick='review.init(this.id)'>독서록 작성하기</button><br/>");
                     msg += ("</div>")
                     msg+=("<hr/>");
                 }
@@ -48,7 +48,8 @@ var index={
 
 };
 
-function test(id) {
+var review = {
+    init: function(id) {
 
     var id = id.substring(10, id.length);
 
@@ -65,13 +66,38 @@ function test(id) {
     $.ajax({
         type: "post",
         url: "/book/review",
-        dataType: "json",
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(data)
     }).done(function () {
         console.log("success");
         window.location.href = "/book/review";
+    }).fail(function (error) {
+        console.log(JSON.stringify(error));
     });
+    },
+    saveReview: function () {
+        $("#btn-reviewSave").on("click", function () {
+            var data = {
+                name: $("#name").val(),
+                author: $("#author").val(),
+                category: $("#category").val(),
+                title: $("#title").val(),
+                content: $("#content").val()
+            };
 
-}
+            $.ajax({
+                type: "post",
+                url: "/book/review/save",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data)
+            }).done(function () {
+                alert("독서록을 저장하였습니다.");
+                window.location.href = "/book/index";
+            });
+        });
+    }
+};
+
 index.init();
+review.saveReview();
